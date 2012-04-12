@@ -52,16 +52,22 @@ $(correctbtn).add(incorrectbtn).mouseup(function(){
 	// If Correct
 	if ($(this).is(correctbtn)) {
 	
-	var $feedbackimg = $('<img src="img/check.png" alt="check" width="23" height="17" class="feedback" />').css('left', $btnwidth);
-	var n = $('#progress li.progress-correct').length; //get amount of progress
-	var $progressloop = function(){
-	
-	if ( n == 4 ) { //if last correct answer 
+		var $feedbackimg = $('<img src="img/check.png" alt="check" width="23" height="17" class="feedback" />').css('left', $btnwidth);
+		var n = $('#progress li.progress-correct').length; //get amount of progress
+		var $progressloop = function(){
 		
-		$('#progress li.progress-correct:last').next().addClass('progress-correct');
-		alert('You Made It!');
-		//window.location = "http://facebook.com";
-	
+		if ( n == 4 ) { //if last correct answer 
+			
+			$('#progress li.progress-correct:last').next().addClass('progress-correct');
+			
+			var url = location.search.split("=")[1];
+			if(url) {
+				window.location = url + '?passed=true';
+			}
+			else{
+				alert('You Made It!');
+			}
+		
 		}
 		
 		else if ( n > 0 ) { // if already progress
