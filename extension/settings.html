@@ -15,20 +15,45 @@
     	.website-input{
     		width:200px;
     	}
+    	.quiz-current{
+    		padding-bottom:20px;
+    	}
+    	.quiz-list{
+    		list-style:none;
+    		margin:0;
+    		padding:0;
+    	}
+    	.quiz-list li{
+    		padding:0;
+    	}
+    	.quiz-list li a{
+    		color:#000;
+    		font-size:.9em;
+    	}
     </style>
-    <script src="jquery-1.7.1.min.js"></script>
-    <script src="settings.js"></script>
   </head>
   <body>
   	<h1>Settings</h1>
   	
-  	<ul class="website-list">
-  		<li>http://www.facebook.com</li>
-  	</ul>
+  	<ul class="website-list"></ul>
 	
 	<form>
 		<input class="website-input" type="text" value="" />
 		<input class="website-button" type="submit" value="Add" />
 	</form>
+	
+	<h1>Quizzes</h1>
+	
+	<div class="quiz-current"></div>
+	
+	<form>
+		<input class="quiz-input" type="text" value="" />
+		<input class="quiz-button" type="submit" value="Search" />
+	</form>
+	
+	<ul class="quiz-list"></ul>
+	
+	<script src="jquery-1.7.1.min.js"></script>
+    <script src="settings.js"></script>
   </body>
 </html>
