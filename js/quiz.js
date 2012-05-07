@@ -28,7 +28,7 @@ var quiz = {};
 			chosenQuiz = quizzes[Math.floor(Math.random()*quizzes.length)];
 		}
 		
-		if(quiz){
+		if(chosenQuiz){
 			$.get('https://api.quizlet.com/2.0/sets/' + chosenQuiz.id + '?client_id=DvyRJVGqjG', {}, function(response){
 				questions = response.terms;
 			});
@@ -42,7 +42,7 @@ var quiz = {};
 			$('#welcome a').on('click', quiz.start);
 		}
 		else{
-			$('#welcome p').html('You have no questions set. Please go to the settings page.');
+			$('#welcome p').html('You have no quizzes chosen. Please go to the settings page.');
 			$('#welcome a').html('Settings').on('click', function(){
 				window.location = 'settings.html';
 			});
