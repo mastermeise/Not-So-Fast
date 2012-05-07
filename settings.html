@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Settings</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+  	<div class="container">
+		<h1 class="settings-h1">Settings</h1>
+		<!-- Number of Questions -->
+		<div id="number-of-questions" class="box settings">
+			<h1>Number of Questions</h1>
+			<div id="slider"><input type="range" min="1" max="20" value="1" step="1" /></div>
+		</div><!-- Number of Questions -->
+		
+		<!-- Websites -->
+		<div id="websites" class="box settings">
+			<h1>Websites</h1>
+			<ul>
+			</ul>
+			<input type="text" style="width:200px; float:left;" />
+			<a href="#" class="add">Add</a>
+		</div><!-- End Websites -->
+		
+		<!-- Questions -->
+		<div id="questions" class="box settings">
+			<h1>Questions</h1>
+			<ul>
+			</ul>
+			<input type="text" style="width:200px; float:left;" />
+			<a href="#" class="search">Search</a>
+			<ul>
+			</ul>
+		</div><!-- End Questions -->	
+	</div><!-- End Container -->
+	
+	<script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/settings.js"></script>
+  </body>
+</html>
