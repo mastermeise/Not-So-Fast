@@ -5,7 +5,7 @@
 	"description": "Hey, Not So Fast, Buddy!",
 	"background": {
 		"scripts": [
-			"bkgd.js"
+			"js/bkgd.js"
 		]
 	},
 	"browser_action": {
