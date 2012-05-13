@@ -1,5 +1,6 @@
 var settings = {};
 
+//test
 (function(window, undefined){
 	var $ = jQuery,
 		blocked_websites,
