@@ -72,14 +72,16 @@ var quiz = {};
 		var newQuestion = $('<div class="single"></div>'),
 			list = $('<ul class="answers"></ul>'),
 			choices = [],
+			image,
 			rand,
 			found;
 		
 		rand = Math.floor(Math.random()*questions.length);
 		currentQuestion = questions.splice(rand, 1)[0];
+		image = currentQuestion.image;
 		
 		newQuestion.append('<span class="progress">' + currentQuestionNum + ' of ' + numOfQuestions + '</span>');
-		newQuestion.append('<h1>' + currentQuestion.term + '</h1>');
+		newQuestion.append('<h1>' + currentQuestion.term + (image ? ' <img src="' + image.url + '" />' : '') + '</h1>');
 		
 		for(var i=0; i<3; i++){
 			found = false;
@@ -93,14 +95,15 @@ var quiz = {};
 				}
 			}while(found);
 			
-			choices.push(questions[rand].definition);
+			choices.push(questions[rand]);
 		}
 		
-		choices.splice(Math.floor(Math.random()*4), 0, currentQuestion.definition);
+		choices.splice(Math.floor(Math.random()*4), 0, currentQuestion);
 		
 		list.empty();
 		for(i=0; i<choices.length; i++){
-			list.append('<li><a href="#">' + choices[i] + '</a></li>');
+			image = choices[i].image;
+			list.append('<li><a href="#">' + choices[i].definition + (image ? ' <img src="' + image.url + '" />' : '') + '</a></li>');
 		}
 		
 		newQuestion.append(list);
