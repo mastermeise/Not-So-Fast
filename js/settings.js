@@ -25,6 +25,7 @@ var settings = {};
 		$('#questions').on('click', 'li.see-more', settings.seeMore);
 	};
 	
+	
 	settings.initScroll = function(){
 		var numOfQuestions = localStorage.getItem('num_of_questions');
 		$('#slider input').val(numOfQuestions ? numOfQuestions : 5);
@@ -46,7 +47,7 @@ var settings = {};
 		
 		list.empty();
 		for(var i=0; i<blocked_websites.length; i++){
-			list.append('<li>' + blocked_websites[i].url + '<span class="switch">' + (blocked_websites[i].on ? 'off' : 'on') + '</span><span class="remove"></span></li>');
+			list.append('<li>' + blocked_websites[i].url + (blocked_websites[i].on ? '<span class="switch">on' : '<span class="switch off">off') + '</span><span class="remove"></span></li>');
 		}
 	};
 	
@@ -161,7 +162,24 @@ var settings = {};
 		settings.updateQuizzes();
 	};
 	
+	
+	
 	$(function(){
 		settings.init();
+		$('span.remove').hide();
+
+	
+	$('ul li').hover(function(){
+	
+	var liremove = $(this).find('span.remove');
+		liremove.toggle('slow');
+			stop();
 	});
+	
+	
+	
+	});
+	
+	
+	
 }(window));

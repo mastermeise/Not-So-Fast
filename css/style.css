@@ -133,6 +133,8 @@ h1 img{ display:block; position:relative; top:10px; margin:0 auto; }
 	left: 8px;
 	cursor: pointer; }
 
+.off { background: #ebebeb; }
+
 .remove { 
 	display: inline-block;
 	float: right;
