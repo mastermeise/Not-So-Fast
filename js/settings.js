@@ -172,8 +172,9 @@ var settings = {};
 	$('ul li').hover(function(){
 	
 	var liremove = $(this).find('span.remove');
-		liremove.toggle('slow');
-			stop();
+		liremove.fadeToggle('slow');
+		stop();
+			
 	});
 	
 	
