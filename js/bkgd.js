@@ -17,7 +17,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 			blocked_websites = JSON.parse(localStorage.getItem('blocked_websites'));
 			blocked_websites = (blocked_websites ? blocked_websites : []);
 			
-			for(var j=0; i<blocked_websites.length; j++){
+			for(var j=0; j<blocked_websites.length; j++){
 				website = blocked_websites[j];
 				
 				if(website.on && tabUrl.substring(0, website.url.length) == website.url){
