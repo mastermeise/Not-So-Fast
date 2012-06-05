@@ -29,7 +29,6 @@ var settings = {};
 		$('#questions').on('click', 'li.see-more', settings.seeMore);
 	};
 	
-	
 	settings.initScroll = function(){
 		var numOfQuestions = localStorage.getItem('num_of_questions');
 		$('#slider input').val(numOfQuestions ? numOfQuestions : 5);
@@ -105,9 +104,15 @@ var settings = {};
 	};
 	
 	settings.removeWebsite = function(){
-		var index = $(this).parent().index();
-		blocked_websites.splice(index, 1);
-		settings.updateWebsites();
+		var item = $(this).parent(),
+			index = item.index();
+		
+		if(!item.is(':animated')){
+			blocked_websites.splice(index, 1);
+			item.fadeOut(400, function(){
+				settings.updateWebsites();
+			});
+		}
 	};
 	
 	settings.getQuizzes = function(){
@@ -214,11 +219,16 @@ var settings = {};
 	};
 	
 	settings.removeQuiz = function(){
-		var index = $(this).parent().index();
-		quizzes.splice(index, 1);
-		settings.updateQuizzes();
+		var item = $(this).parent(),
+			index = item.index();
+		
+		if(!item.is(':animated')){
+			quizzes.splice(index, 1);
+			item.fadeOut(400, function(){
+				settings.updateQuizzes();
+			});
+		}	
 	};
-	
 	
 	$(function(){
 		settings.init();
