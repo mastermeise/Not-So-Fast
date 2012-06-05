@@ -149,6 +149,7 @@ var settings = {};
 					currentSet = response.sets;
 					if(currentSet){
 						list.empty();
+						list.show();
 						for(var i=0; i<10; i++){
 							if(currentSet[0]){
 								list.append('<li data-id="' + currentSet[0].id + '">' + currentSet[0].title + '<span class="add">add</span></li>');
