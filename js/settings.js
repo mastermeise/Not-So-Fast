@@ -16,11 +16,13 @@ var settings = {};
 		
 		$('#slider input').on('change', settings.updateScroll);
 		$('#websites form').on('click', settings.showForm);
+		$('#websites form').on('submit', settings.submitForm);
 		$('#websites a.add').on('click', settings.addWebsite);
 		$('#websites').on('click', 'span.switch', settings.toggleWebsite);
 		$('#websites').on('mouseenter mouseleave', 'ul li', settings.hoverWebsite);
 		$('#websites').on('click', 'span.remove', settings.removeWebsite);
 		$('#questions form').on('click', settings.showQuiz);
+		$('#questions form').on('submit', settings.submitForm);
 		$('#questions a.add').on('click', settings.searchQuizzes);
 		$('#questions').on('click', 'span.switch', settings.toggleQuiz);
 		$('#questions').on('mouseenter mouseleave', 'ul li', settings.hoverQuiz);
@@ -67,6 +69,12 @@ var settings = {};
 			
 			return false;
 		}
+	};
+	
+	settings.submitForm = function(){
+		$(this).find('a').click();
+		
+		return false;
 	};
 	
 	settings.addWebsite = function(){
