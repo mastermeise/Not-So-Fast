@@ -15,11 +15,15 @@ var settings = {};
 		settings.updateQuizzes();
 		
 		$('#slider input').on('change', settings.updateScroll);
+		$('#websites form').on('click', settings.showForm);
 		$('#websites a.add').on('click', settings.addWebsite);
 		$('#websites').on('click', 'span.switch', settings.toggleWebsite);
+		$('#websites').on('mouseenter mouseleave', 'ul li', settings.hoverWebsite);
 		$('#websites').on('click', 'span.remove', settings.removeWebsite);
-		$('#questions a.search').on('click', settings.searchQuizzes);
+		$('#questions form').on('click', settings.showQuiz);
+		$('#questions a.add').on('click', settings.searchQuizzes);
 		$('#questions').on('click', 'span.switch', settings.toggleQuiz);
+		$('#questions').on('mouseenter mouseleave', 'ul li', settings.hoverQuiz);
 		$('#questions').on('click', 'span.remove', settings.removeQuiz);
 		$('#questions').on('click', 'span.add', settings.addQuiz);
 		$('#questions').on('click', 'li.see-more', settings.seeMore);
@@ -51,27 +55,53 @@ var settings = {};
 		}
 	};
 	
+	settings.showForm = function(){
+		var _this = $(this);
+		
+		if(_this.hasClass('init')){
+			_this.removeClass('init');
+			_this.find('.showinput').fadeOut();
+			_this.find('input').fadeIn();
+			_this.css('width', 166).animate({width: '100%'}, 1000, function(){
+				_this.find('.add').css('webkitTransform', 'rotate(-90deg)');
+			});
+			
+			return false;
+		}
+	};
+	
 	settings.addWebsite = function(){
-		var website = $('#websites input').val(), regex;
-		
-		website = website.replace('http://', '').replace('https://', '');
-		regex = new RegExp('^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$');
-		if(regex.test(website)){
-			blocked_websites.push({url: website, on: true});
-			$('#websites input').val('')
-			settings.updateWebsites();
+		if(!$(this).parent().hasClass('init')){
+			var website = $('#websites input').val(), regex;
+			
+			website = website.replace('http://', '').replace('https://', '');
+			regex = new RegExp('^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$');
+			if(regex.test(website)){
+				blocked_websites.push({url: website, on: true});
+				$('#websites input').val('')
+				settings.updateWebsites();
+			}
+			else{
+				alert('NOT VALID!!!!!!!');
+			}
+			
+			return false;
 		}
-		else{
-			alert('NOT VALID!!!!!!!');
-		}
-		
-		return false;
 	};
 	
 	settings.toggleWebsite = function(){
 		var index = $(this).parent().index();
 		blocked_websites[index].on = !blocked_websites[index].on;
 		settings.updateWebsites();
+	};
+	
+	settings.hoverWebsite = function(event){
+		if(event.type == 'mouseenter'){
+			$(this).find('span.remove').stop(true, true).fadeIn('slow');
+		}
+		else{
+			$(this).find('span.remove').stop(true, true).fadeOut();
+		}
 	};
 	
 	settings.removeWebsite = function(){
@@ -95,32 +125,49 @@ var settings = {};
 		}
 	};
 	
-	settings.searchQuizzes = function(){
-		var term = $('#questions input').val(), list = $('#questions ul').eq(1);
+	settings.showQuiz = function(){
+		var _this = $(this);
 		
-		if(term.length >= 3){
-			$.get('https://api.quizlet.com/2.0/search/sets?q='+term+'&client_id=DvyRJVGqjG', {}, function(response){
-				currentSet = response.sets;
-				if(currentSet){
-					list.empty();
-					for(var i=0; i<10; i++){
+		if(_this.hasClass('init')){
+			_this.removeClass('init');
+			_this.find('.showinput').fadeOut();
+			_this.find('input').fadeIn();
+			_this.css('width', 187).animate({width: '100%'}, 1000, function(){
+				_this.find('.add').css('webkitTransform', 'rotate(-90deg)');
+			});
+			
+			return false;
+		}
+	};
+	
+	settings.searchQuizzes = function(){
+		if(!$(this).parent().hasClass('init')){
+			var term = $('#questions input').val(), list = $('#questions ul').eq(1);
+			
+			if(term.length >= 3){
+				$.get('https://api.quizlet.com/2.0/search/sets?q='+term+'&client_id=DvyRJVGqjG', {}, function(response){
+					currentSet = response.sets;
+					if(currentSet){
+						list.empty();
+						for(var i=0; i<10; i++){
+							if(currentSet[0]){
+								list.append('<li data-id="' + currentSet[0].id + '">' + currentSet[0].title + '<span class="add">add</span></li>');
+								currentSet.splice(0, 1);
+							}
+						}
+						
 						if(currentSet[0]){
-							list.append('<li data-id="' + currentSet[0].id + '">' + currentSet[0].title + '<span class="add">add</span></li>');
-							currentSet.splice(0, 1);
+							list.append('<li class="see-more">See More</li>');
 						}
 					}
-					
-					if(currentSet[0]){
-						list.append('<li class="see-more">See More</li>');
-					}
-				}
-			});
+				});
+			}
+			else{
+				alert('SEARCH TERM MUST BE 3 CHARACTERS OR MORE!');
+			}
+			
+			return false;
 		}
-		else{
-			alert('SEARCH TERM MUST BE 3 CHARACTERS OR MORE!');
-		}
-		
-		return false;
 	};
 	
 	settings.seeMore = function(){
@@ -156,6 +203,15 @@ var settings = {};
 		settings.updateQuizzes();
 	};
 	
+	settings.hoverQuiz = function(event){
+		if(event.type == 'mouseenter'){
+			$(this).find('span.remove').stop(true, true).fadeIn('slow');
+		}
+		else{
+			$(this).find('span.remove').stop(true, true).fadeOut();
+		}
+	};
+	
 	settings.removeQuiz = function(){
 		var index = $(this).parent().index();
 		quizzes.splice(index, 1);
@@ -163,24 +219,8 @@ var settings = {};
 	};
 	
 	
-	
 	$(function(){
 		settings.init();
-		$('span.remove').hide();
-
-	
-	$('ul li').hover(function(){
-	
-	var liremove = $(this).find('span.remove');
-		liremove.fadeToggle('slow');
-		stop();
-			
 	});
-	
-	
-	
-	});
-	
-	
 	
 }(window));

@@ -19,7 +19,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 			for(var j=0; i<blocked_websites.length; j++){
 				website = blocked_websites[j];
 				
-				if(website && website.on && tabUrl.substring(0, website.url.length) == website.url){
+				if(website.on && tabUrl.substring(0, website.url.length) == website.url){
 					chrome.tabs.update(tab.id, {url: 'chrome-extension://' + chrome.i18n.getMessage("@@extension_id") + '/quiz.html?url=' + changeInfo.url});
 				}
 			}
