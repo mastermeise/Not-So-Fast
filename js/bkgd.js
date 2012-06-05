@@ -15,6 +15,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 		if(tabUrl.indexOf('?passed=true') == -1){
 			tabUrl = tabUrl.replace('http://', '').replace('https://', '');
 			blocked_websites = JSON.parse(localStorage.getItem('blocked_websites'));
+			blocked_websites = (blocked_websites ? blocked_websites : []);
 			
 			for(var j=0; i<blocked_websites.length; j++){
 				website = blocked_websites[j];
