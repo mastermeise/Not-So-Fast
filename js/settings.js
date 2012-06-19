@@ -16,12 +16,14 @@ var settings = {};
 		
 		$('#slider input').on('change', settings.updateScroll);
 		$('#websites form').on('click', settings.showForm);
+		$('#websites form input').on('focusout', settings.hideForm);
 		$('#websites form').on('submit', settings.submitForm);
 		$('#websites a.add').on('click', settings.addWebsite);
 		$('#websites').on('click', 'span.switch', settings.toggleWebsite);
 		$('#websites').on('mouseenter mouseleave', 'ul li', settings.hoverWebsite);
 		$('#websites').on('click', 'span.remove', settings.removeWebsite);
 		$('#questions form').on('click', settings.showQuiz);
+		$('#questions form input').on('focusout', settings.hideQuiz);
 		$('#questions form').on('submit', settings.submitForm);
 		$('#questions a.add').on('click', settings.searchQuizzes);
 		$('#questions').on('click', 'span.switch', settings.toggleQuiz);
@@ -61,11 +63,30 @@ var settings = {};
 		
 		if(_this.hasClass('init')){
 			_this.removeClass('init');
-			_this.find('.showinput').fadeOut();
-			_this.find('input').fadeIn();
-			_this.css('width', 166).animate({width: '100%'}, 1000, function(){
+			_this.find('.showinput').stop(true, true).fadeOut();
+			_this.find('input').stop(true, true).fadeIn().focus();
+			
+			if(_this.width() < 166){
+				_this.css('width', 166);
+			}
+			
+			_this.stop().animate({width: '100%'}, 1000, function(){
 				_this.find('.add').css('webkitTransform', 'rotate(-90deg)');
 			});
+			
+			return false;
+		}
+	};
+	
+	settings.hideForm = function(){
+		var _this = $(this).parent();
+		
+		if(!_this.hasClass('init')){
+			_this.addClass('init');
+			_this.find('.add').css('webkitTransform', '');
+			_this.find('.showinput').stop(true, true).fadeIn(900);
+			_this.find('input').stop(true, true).fadeOut('slow');
+			_this.stop().animate({width: 166}, 1000);
 			
 			return false;
 		}
@@ -143,15 +164,35 @@ var settings = {};
 		
 		if(_this.hasClass('init')){
 			_this.removeClass('init');
-			_this.find('.showinput').fadeOut();
-			_this.find('input').fadeIn();
-			_this.css('width', 187).animate({width: '100%'}, 1000, function(){
+			_this.find('.showinput').stop(true, true).fadeOut();
+			_this.find('input').stop(true, true).fadeIn().focus();
+			
+			if(_this.width() < 187){
+				_this.css('width', 187);
+			}
+			
+			_this.stop().animate({width: '100%'}, 1000, function(){
 				_this.find('.add').css('webkitTransform', 'rotate(-90deg)');
 			});
 			
 			return false;
 		}
 	};
+	
+	settings.hideQuiz = function(){
+		var _this = $(this).parent();
+		
+		if(!_this.hasClass('init')){
+			_this.addClass('init');
+			_this.find('.add').css('webkitTransform', '');
+			_this.find('.showinput').stop(true, true).fadeIn(900);
+			_this.find('input').stop(true, true).fadeOut('slow');
+			_this.stop().animate({width: 187}, 1000);
+			
+			return false;
+		}
+	};
+	
 	
 	settings.searchQuizzes = function(){
 		if(!$(this).parent().hasClass('init')){
