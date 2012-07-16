@@ -38,7 +38,7 @@ var quiz = {};
 			redirectUrl = window.location.search.split('=');
 			redirectUrl = (redirectUrl.length > 0 ? redirectUrl[1] : 'www.google.com');
 			
-			$('#welcome p').html('You have to answer ' + numOfQuestions + ' questions before I let you go to ' + redirectUrl.replace('http://', '').replace('https://', ''));
+			$('#welcome p').html('Answer ' + numOfQuestions + ' questions to get to ' + redirectUrl.replace('http://', '').replace('https://', ''));
 			$('#welcome a').on('click', quiz.start);
 		}
 		else{
