@@ -16,30 +16,14 @@ time, mark, audio, video {
 	border: 0;
 	font: inherit;
 	vertical-align: baseline;
-	color: #b2b2b2;
-	
-}
+	color: #b2b2b2; }
 article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
+footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
 blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
+q:before, q:after { content: ''; content: none; }
+table {	border-collapse: collapse; border-spacing: 0; }
 /* == End Reset == */
 
 
@@ -57,28 +41,10 @@ h1 {
 	font-size: 24px; 
 	line-height: 28px; 
 	margin: 40px 0 0;
-	color: #00cdec;
-	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif; }
+	color: #00cdec; }
 
 a { color: #b2b2b2; text-decoration: none; }
 a:active { position: relative; top: 1px; } 
-
-.main-btn { 
-	display: block;
-	width: 48px;
-	height: 48px;
-	border-radius: 4px; 
-	-webkit-border-radius: 4px;
-	background: center center no-repeat #00cdec;
-	position: absolute;
-	top: 48px; }
-
-.main-btn:hover { background-color: #00c2e0; } 
-.main-btn:active { top: 49px; position: absolute; }
-
-#settings-btn { background-image: url(../img/settings-btn.png); right: 12px; }
-	
-#back-btn { background-image: url(../img/back-btn.png); left: 12px; }
 
 .container { 
 	width: 540px;
@@ -86,6 +52,21 @@ a:active { position: relative; top: 1px; }
 	margin: 144px auto 36px;
 	overflow: visible;
 	position: relative; }
+	
+.btn {
+color: #fff;
+background: #00cdec;
+border-radius: 3px;
+font-size: 24px;
+position: absolute;
+top: 48px;
+right: 14px;
+cursor: pointer;
+line-height: 24px;
+padding: 12px 32px; }
+
+.btn:hover { -webkit-box-shadow: inset 0 1px 0 0 #20e5fc, 0 1px 2px 0 rgba(0, 0, 0, .3); }
+.btn:active { top: 49px; -webkit-box-shadow: inset 0 0 3px 0px rgba(0, 0, 0, .3); }
 
 
 /* == Content == */
