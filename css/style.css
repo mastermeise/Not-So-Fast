@@ -44,7 +44,6 @@ h1 {
 	color: #00cdec; }
 
 a { color: #b2b2b2; text-decoration: none; }
-a:active { position: relative; top: 1px; } 
 
 .container { 
 	width: 540px;
@@ -90,6 +89,7 @@ ul { margin: 20px 0 0; }
 ul li { padding: 12px 0; border-bottom: 1px solid #ebebeb; }
 ul li:hover { background: #e5fdff; }
 ul li:last-child { margin-bottom: 12px; }
+
 
 ul.answers li a { padding: 12px; display: block; border-radius: 4px; -webkit-border-radius: 4px; }
 ul.answers li a:hover { background: #ebebeb; } 

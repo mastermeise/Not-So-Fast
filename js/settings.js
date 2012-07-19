@@ -155,7 +155,7 @@ var settings = {};
 		
 		list.empty();
 		for(var i=0; i<quizzes.length; i++){
-			list.append('<li>' + quizzes[i].title + '<span class="switch">' + (quizzes[i].on ? 'off' : 'on') + '</span><span class="remove"></span></li>');
+			list.append('<li><span class="switch">' + (quizzes[i].on ? 'off' : 'on') + '</span>' + quizzes[i].title + '<span class="remove"></span></li>');
 		}
 	};
 	
