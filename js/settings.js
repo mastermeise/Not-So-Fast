@@ -19,14 +19,14 @@ var settings = {};
 		$('#websites form input').on('focusout', settings.hideForm);
 		$('#websites form').on('submit', settings.submitForm);
 		$('#websites a.add').on('click', settings.addWebsite);
-		$('#websites').on('click', 'span.switch', settings.toggleWebsite);
+		$('#websites').on('click', '.settings ul li', settings.toggleWebsite);
 		$('#websites').on('mouseenter mouseleave', 'ul li', settings.hoverWebsite);
 		$('#websites').on('click', 'span.remove', settings.removeWebsite);
 		$('#questions form').on('click', settings.showQuiz);
 		$('#questions form input').on('focusout', settings.hideQuiz);
 		$('#questions form').on('submit', settings.submitForm);
 		$('#questions a.add').on('click', settings.searchQuizzes);
-		$('#questions').on('click', 'span.switch', settings.toggleQuiz);
+		$('#questions').on('click', '.settings ul li', settings.toggleQuiz);
 		$('#questions').on('mouseenter mouseleave', 'ul li', settings.hoverQuiz);
 		$('#questions').on('click', 'span.remove', settings.removeQuiz);
 		$('#questions').on('click', 'span.add', settings.addQuiz);
@@ -54,7 +54,7 @@ var settings = {};
 		
 		list.empty();
 		for(var i=0; i<blocked_websites.length; i++){
-			list.append('<li>' + blocked_websites[i].url + (blocked_websites[i].on ? '<span class="switch">on' : '<span class="switch off">off') + '</span><span class="remove"></span></li>');
+			list.append('<li>' + (blocked_websites[i].on ? '<span class="switch">on' : '<span class="switch off">off') + '</span>' + blocked_websites[i].url + '<span class="remove"></span></li>');
 		}
 	};
 	
@@ -110,7 +110,7 @@ var settings = {};
 				settings.updateWebsites();
 			}
 			else{
-				alert('NOT VALID!!!!!!!');
+				alert('Not a valid URL. Please try again.');
 			}
 			
 			return false;
