@@ -86,14 +86,12 @@ padding: 12px 32px; }
 .settings { margin: 0 0 12px 0; }
 
 ul { margin: 20px 0 0; }
-ul li { padding: 12px 0; border-bottom: 1px solid #ebebeb; }
+ul li { padding: 12px 0; border-bottom: 1px solid #ebebeb; cursor: pointer; }
 ul li:hover { background: #e5fdff; }
 ul li:last-child { margin-bottom: 12px; }
 
-
-ul.answers li a { padding: 12px; display: block; border-radius: 4px; -webkit-border-radius: 4px; }
-ul.answers li a:hover { background: #ebebeb; } 
-ul.answers li a img{ margin-left:40px; position:relative; top:5px; display:block;}
+ul.answers li { padding: 24px 12px; }
+ul.answers li img{ margin-left:40px; position:relative; top:5px; display:block;}
 h1 img{ display:block; position:relative; top:10px; margin:0 auto; }
 
 .settings h1 { text-indent: 12px; }

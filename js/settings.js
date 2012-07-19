@@ -118,7 +118,7 @@ var settings = {};
 	};
 	
 	settings.toggleWebsite = function(){
-		var index = $(this).parent().index();
+		var index = $(this).index();
 		blocked_websites[index].on = !blocked_websites[index].on;
 		settings.updateWebsites();
 	};
@@ -253,7 +253,7 @@ var settings = {};
 	};
 	
 	settings.toggleQuiz = function(){
-		var index = $(this).parent().index();
+		var index = $(this).index();
 		quizzes[index].on = !quizzes[index].on;
 		settings.updateQuizzes();
 	};

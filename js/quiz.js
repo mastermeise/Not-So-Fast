@@ -39,11 +39,11 @@ var quiz = {};
 			redirectUrl = (redirectUrl.length > 0 ? redirectUrl[1] : 'www.google.com');
 			
 			$('#welcome p').html('Answer ' + numOfQuestions + ' questions to get to ' + redirectUrl.replace('http://', '').replace('https://', ''));
-			$('#welcome a').on('click', quiz.start);
+			$('#welcome li').on('click', quiz.start);
 		}
 		else{
 			$('#welcome p').html('You have no quizzes chosen. Please go to the settings page.');
-			$('#welcome a').html('Settings').on('click', function(){
+			$('#welcome li').html('Settings').on('click', function(){
 				window.location = 'settings.html';
 			});
 		}
@@ -103,7 +103,7 @@ var quiz = {};
 		list.empty();
 		for(i=0; i<choices.length; i++){
 			image = choices[i].image;
-			list.append('<li><a href="#">' + choices[i].definition + (image ? ' <img src="' + image.url + '" />' : '') + '</a></li>');
+			list.append('<li>' + choices[i].definition + (image ? ' <img src="' + image.url + '" />' : '') + '</li>');
 		}
 		
 		newQuestion.append(list);
